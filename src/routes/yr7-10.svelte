@@ -1,110 +1,180 @@
+<script>
+  /* each garment is defined as a variable.
+   * let is a boolean variable
+   */
+  /*
+  let summerdress = false;
+  let culottes = false;
+  let longsleeved = false;
+  let jerseys = false;
+  let blazer = false;
+  let rangisocks = false;
+  let shoes = false;
+  let jacket = false;
+
+  let kilt = false;
+  let culottes2 = false;
+  let lightshirt = false;
+  let tie = false;
+  let jersey2 = false;
+  let blazer2 = false;
+  let tights = false;
+  let shoes2 = false;
+  let jacket2 = false;
+  */
+  import { stores } from "@sapper/app";
+  const { session } = stores();
+
+  console.log("Working on junior");
+  //alowing saved items in the options from multiple pages
+  function addOptions() {
+    console.log("Added item");
+    session.garments = [...session.garments, ...options];
+  }
+  // array of garments
+  let options = [
+    {
+      name: "Summerdress - $ 130.00",
+      ticked: false,
+      size: "Size"
+    },
+    { name: "Culottes - $ 79.50 (Optional)", ticked: false, size: "Size" },
+    { name: "Short sleeved blouse $ 68.50 ", ticked: false, size: "Size" },
+
+    { name: "Navy blazer - $ 299.00", ticked: false, size: "Size" },
+    {
+      name: "Rangisocks - $ 8.00",
+      ticked: false,
+      size: "Size"
+    },
+
+    {
+      name: "RR navy or yellow waterproof jacket - $ 140.00 (Optional)",
+      ticked: false,
+      size: "Size"
+    },
+    {
+      name: "Winter kilt $ 250.00",
+      ticked: false,
+      size: "Size"
+    },
+    { name: "Blue culottes - $ 79.50 (Optional)", ticked: false, size: "Size" },
+    {
+      name: "RR blue Winter blouse - $ 63.70 - $ 67.20",
+      ticked: false,
+      size: "Size"
+    },
+    { name: "Navy tie - $ 34.40", ticked: false, size: "Size" },
+    {
+      name: "Navy cardigan - $ 90.00 - $ 103.00",
+      ticked: false,
+      size: "Size"
+    },
+
+    {
+      name: "Navy tights or navy over the knee socks - $ 18.40",
+      ticked: false,
+      size: "Size"
+    },
+    {
+      name: "RR navy or yellow waterproof jacket $ 140.00 (Optional)",
+      ticked: false,
+      size: "Size"
+    }
+  ];
+</script>
+
 <style>
+  button {
+    display: block;
+  }
   /*#####banner image####*/
   #banner {
     height: 250px;
-    width: 2200px;
-    margin-left: 15%;
+    width: 1500px;
   }
 
   #uniform {
     height: 37px;
     width: 250px;
-    margin-left: 41%;
-  }
-  div {
-    margin-left: 110px;
-  }
-
-  h2 {
-    margin-left: 210px;
-  }
-
-  #winter {
-    height: 300px;
-    width: 300px;
-  
   }
 
   #summerjun {
     height: 300px;
     width: 300px;
-    
+  }
+
+  #winter {
+    height: 300px;
+    width: 300px;
+  }
+
+  #optionsbutton {
+    margin: left;
+    display: block;
   }
 
   /* ######## LAYOUT #########*/
   #grid-container {
     display: grid;
     grid:
-      " text winter    " auto
-      " text summerjun " auto
+      " banner                           banner   " auto
+      " uniform                        uniform    " auto
+      " items                        winter  " auto
+      " items                        summerjun " auto
+      "  items                         .   " auto
+      " items                       .             " auto
+      "  optionsbutton              .      " auto
       / auto auto;
   }
 
-  #text {
-    grid-area: text;
+  #summerjun {
+    grid-area: summerjun;
   }
   #winter {
     grid-area: winter;
   }
-  #summerjun {
-    grid-area: summerjun;
+  #optionsbutton {
+    grid-area: optionsbutton;
+    display: block;
+  }
+
+  #items {
+    grid-area: items;
+  }
+  #uniform {
+    grid-area: uniform;
+    place-self: center;
+  }
+  #banner {
+    grid-area: banner;
+    justify-self: stretch;
   }
 </style>
 
-<figure id="banner">
+<!---this code is adding the banner which is on every page.-->
+<div id="grid-container">
+
   <img
+    id="banner"
     src="/images/banner.png"
     alt="banner"
     title="Image courtesy to Rangi Ruru" />
-</figure>
 
-<figure id="uniform">
-  <img
-    src="/images/uniform.png"
-    alt="uniform"
-    title="Image courtesy to Rangi Ruru" />
-</figure>
-<div id="grid-container">
-
-  <div id="text">
-    <p>
-      <u>
-        <h2 class="subtitle is-2">Summer Uniform:</h2>
-      </u>
-      <li>Summer dress (length to be on the knee)</li>
-      <li>Blue culottes (optional)</li>
-      <li>RR blue short sleeved shirt (optional)</li>
-      <li>Navy cardigan or v-necked jersey</li>
-      <li>Navy blazer</li>
-      <li>
-        White socks, short, with or without RR gold logo (optional with sandals
-        but compulsory with lace-up shoes)
-      </li>
-      <li>
-        Brown leather t-bar or u-bar sandals or Brown leather lace-up shoes
-      </li>
-      <li>RR navy or yellow waterproof jacket (optional)</li>
-
-      <u>
-        <h2 class="subtitle is-2">Winter Uniform:</h2>
-      </u>
-      <li>
-        Kilt (length – midway between ankle and knee) or skirt (length to be
-        just below the knee)
-      </li>
-      <li>Blue culottes (optional)</li>
-      <li>RR light blue long-sleeved shirt (optional)</li>
-      <li>Navy tie</li>
-      <li>Navy cardigan or v-necked jersey</li>
-      <li>Navy blazer</li>
-      <li>Navy tights or navy over the knee socks</li>
-      <li>
-        Brown leather t-bar or u-bar sandals or brown leather lace-up shoes
-      </li>
-      <li>RR navy or yellow waterproof jacket (optional)</li>
-
-    </p>
-  </div>
+  <!---this code is adding the uniform image under the banner which is on every page.-->
+  <figure id="uniform">
+    <img
+      src="/images/uniform.png"
+      alt="uniform"
+      title="Image courtesy to Rangi Ruru" />
+  </figure>
+  <!---images which show the user what the uniform looks like. These images are from Rangiruru.-->
+  <figure id="summerjun">
+    <img
+      src="/images/summerjun.png"
+      alt="summerjun"
+      title="Image courtesy to Rangi Ruru" />
+  </figure>
 
   <figure id="winter">
     <img
@@ -113,10 +183,42 @@
       title="Image courtesy to Rangi Ruru" />
   </figure>
 
-  <figure id="summerjun">
-    <img
-      src="/images/summerjun.png"
-      alt="summerjun"
-      title="Image courtesy to Rangi Ruru" />
-  </figure>
+  <div id="items">
+    <h2 class="title is-2">JUNIOR UNIFORM:</h2>
+    <ul>
+      <!-- loop through the array -->
+      {#each options as option}
+        <!-- add a labelled checkbox for each one -->
+        <label>
+          <li>
+            <!-- the tickbox is linked to the Boolean -->
+            <input type="checkbox" bind:checked={option.ticked} />
+
+            <!--different sizing of garments-->
+            <select bind:value={option.size}>
+              <option>size</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8">8</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+              <option value="14">14</option>
+              <option value="16">16</option>
+            </select>
+            <!-- the item for the tickbox -->
+            {option.name}
+          </li>
+        </label>
+      {/each}
+    </ul>
+  </div>
+  <!--Multiple buttons including a save button, checkout and back to options-->
+  <div id="optionsbutton">
+    <button class="button is-focused" on:click={addOptions}>save items</button>
+    <a class="button" href="options" style="margin:5px;">options</a>
+    <br />
+    <a class="button" href="checkout" style="margin:5px;">checkout</a>
+
+  </div>
+
 </div>

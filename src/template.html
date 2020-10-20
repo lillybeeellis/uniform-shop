@@ -1,19 +1,47 @@
 <!doctype html>
 <html lang='en'>
 
-	<head>
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
-		%sapper.base%
-		<link rel='stylesheet' href='global.css'>
-		<link rel='icon' type='image/png' href='favicon.png'>
-		%sapper.styles%
-		%sapper.head%
-	</head>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+	%sapper.base%
+	<link rel='stylesheet' href='global.css'>
+	<link rel='icon' type='image/png' href='favicon.png'>
+	%sapper.styles%
+	%sapper.head%
+</head>
 
-	<body>
-		<div id='sapper'>%sapper.html%</div>
-		%sapper.scripts%
-	</body>
+<body>
+	<div id='sapper'>%sapper.html%</div>
+
+	<!-- The core Firebase JS SDK is always required
+			and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+			https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+
+	<script>
+		// Your web app's Firebase configuration
+
+		var firebaseConfig = {
+			apiKey: "AIzaSyAtgRLzoDyDzpjbxYVVQ5WwjXcXLm6KqjY",
+			authDomain: "get-ready-9d584.firebaseapp.com",
+			databaseURL: "https://get-ready-9d584.firebaseio.com",
+			projectId: "get-ready-9d584",
+			storageBucket: "get-ready-9d584.appspot.com",
+			messagingSenderId: "499971249103",
+			appId: "1:499971249103:web:6a95fbf25ad34da822b8ba",
+			measurementId: "G-57SJRMK6SV"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		// create the database variable so that the rest of the app can use it
+		const db = firebase.firestore()
+	</script>
+	%sapper.scripts%
+</body>
 
 </html>
