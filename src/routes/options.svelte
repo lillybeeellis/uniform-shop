@@ -15,8 +15,8 @@
     session.name = name;
     console.log(session.name);
     //if user does not eneter name or too long or too short it will alert them
-    if (name === `` || name.length >= 25 || name.length <= 1) {
-      alert(`You did not enter you're name`);
+    if (name === `` || name.length >= 25 || name.length <= 2) {
+      alert(`You did not enter your name`);
     } else {
     }
   }
@@ -58,11 +58,11 @@
     title="Image courtesy to Rangi Ruru" />
 
   <!---the heading 1-->
-
+  <!--input of name-->
   <div class="box">
     <p>Enter name:</p>
     <input bind:value={name} />
-    <button class="button is-focused" on:click={addName}>save Name</button>
+    <button class="button is-focused" on:click={addName}>Save Name</button>
     <h1 class="subtitle is-1">Options</h1>
 
     <!---button going to the summer and winter year 7-10 uniform page-->

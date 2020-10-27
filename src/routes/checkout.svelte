@@ -8,6 +8,8 @@
       ...session.garments.slice(index + 1)
     ];
   }
+  // name variable
+  let name = "";
 
   function saveDataToLocal() {
     // let data = JSON.stringify(session.garments)
@@ -30,9 +32,17 @@
 
     // get the document from the database for the given name
     console.log(session.name);
-    let nameDoc = await db.collection("orders").doc(session.name).get();
+    let nameDoc = await db
+      .collection("orders")
+      .doc(session.name)
+      .get();
     let orders = nameDoc.data();
-    session.garments = orders.garments
+    session.garments = orders.garments;
+  }
+  // //alowing saved items in the options from multiple pages
+  function addName() {
+    session.name = name;
+    console.log(session.name);
   }
 </script>
 
@@ -115,3 +125,7 @@
 <button class="button" on:click={saveDataToLocal}>Remember me</button>
 <!---Get my details button-->
 <button class="button" on:click={getDataFromLocal}>Get my details</button>
+<!--input of name if they user wants to get their details-->
+<p>Enter name to get details:</p>
+<input bind:value={name} />
+<button class="button is-focused" on:click={addName}>Save Name</button>

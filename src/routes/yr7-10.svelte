@@ -22,15 +22,48 @@
   let shoes2 = false;
   let jacket2 = false;
   */
+  // import { stores } from "@sapper/app";
+  // const { session } = stores();
+
+  // console.log("Working on junior");
+  // //alowing saved items in the options from multiple pages
+  // function addOptions() {
+  //   console.log("Added item");
+  //   session.garments = [...session.garments, ...options];
+  // }
+  // each object has a name and a Boolean
+  //variable for each singular garment that is not selected
+  let notTicked = false;
+
   import { stores } from "@sapper/app";
   const { session } = stores();
 
-  console.log("Working on junior");
+  if (session.garments === undefined) {
+    session.garments = [];
+  }
+
   //alowing saved items in the options from multiple pages
   function addOptions() {
-    console.log("Added item");
-    session.garments = [...session.garments, ...options];
+    // session.garments = [...session.garments, ...options];
+    //if user does not eneter name or too long or too short it will alert them
+    options.forEach(function addOptions(item, index) {
+      if (false === item.ticked) {
+        console.log(session.garments === false);
+        notTicked = false;
+      } else {
+        // for each loop to go through the options array
+        // if the option is ticked, then add it to garments
+        options.forEach(function addOptions(item, index) {
+          if (true === item.ticked) {
+            console.log(session.garments === true);
+            session.garments = [...session.garments, item];
+          }
+        });
+      }
+    });
+    if (false === notTicked) alert(`You did not save any garments`);
   }
+
   // array of garments
   let options = [
     {
