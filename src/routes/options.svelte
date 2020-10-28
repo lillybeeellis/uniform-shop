@@ -10,6 +10,7 @@
 
   // name variable
   let name = "";
+  let letters = /^[A-Za-z]+$/;
   // //alowing saved items in the options from multiple pages
   function addName() {
     session.name = name;
@@ -17,8 +18,13 @@
     //if user does not eneter name or too long or too short it will alert them
     if (name === `` || name.length >= 25 || name.length <= 2) {
       alert(`You did not enter your name`);
-    } else {
-    }
+    } else if 
+      (!name.match(letters)){
+        alert ("Please enter a name with no numbers")
+      }
+
+    
+    
   }
 </script>
 
@@ -61,7 +67,7 @@
   <!--input of name-->
   <div class="box">
     <p>Enter name:</p>
-    <input type="text" pattern="[A-Za-z]" bind:value={name} />
+    <input type="text"  bind:value={name} />
     <button class="button is-focused" on:click={addName}>Save Name</button>
     <h1 class="subtitle is-1">Options</h1>
 
