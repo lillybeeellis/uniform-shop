@@ -18,13 +18,9 @@
     //if user does not eneter name or too long or too short it will alert them
     if (name === `` || name.length >= 25 || name.length <= 2) {
       alert(`You did not enter your name`);
-    } else if 
-      (!name.match(letters)){
-        alert ("Please enter a name with no numbers")
-      }
-
-    
-    
+    } else if (!name.match(letters)) {
+      alert("Please enter a name with no numbers");
+    }
   }
 </script>
 
@@ -67,7 +63,7 @@
   <!--input of name-->
   <div class="box">
     <p>Enter name:</p>
-    <input type="text"  bind:value={name} />
+    <input type="text" bind:value={name} />
     <button class="button is-focused" on:click={addName}>Save Name</button>
     <h1 class="subtitle is-1">Options</h1>
 

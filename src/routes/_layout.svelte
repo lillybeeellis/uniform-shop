@@ -1,14 +1,19 @@
 <script>
-	import Nav from './_components/Nav.svelte'
+  import Nav from "./_components/Nav.svelte";
 
-	export let segment
+  export let segment;
 </script>
 
 <style>
+
 </style>
 
-<Nav {segment}/>
+<svelte:head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+</svelte:head>
+<Nav {segment} />
 
 <main class="section">
-	<slot></slot>
+  <slot />
 </main>
