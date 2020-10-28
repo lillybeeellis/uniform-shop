@@ -12,20 +12,23 @@
   let name = "";
 
   function saveDataToLocal() {
-    // let data = JSON.stringify(session.garments)
-    // localStorage.setItem('session.garments', data)
-    let orders = {
-      name: session.name,
-      garments: session.garments
-    };
-    console.log("Starting save...");
-    console.log(session.name);
-    console.log(session.garments);
-    db.collection("orders")
-      .doc(session.name)
-      .set(orders);
+    if (session.garments.length === 0) {
+      alert("There has not been any garments selected to order");
+    } else {
+      // let data = JSON.stringify(session.garments)
+      // localStorage.setItem('session.garments', data)
+      let orders = {
+        name: session.name,
+        garments: session.garments
+      };
+      console.log("Starting save...");
+      console.log(session.name);
+      console.log(session.garments);
+      db.collection("orders")
+        .doc(session.name)
+        .set(orders);
+    }
   }
-
   async function getDataFromLocal() {
     // let data = localStorage.getItem('session.garments')
     // session.garments = JSON.parse(data)
@@ -44,6 +47,8 @@
     session.name = name;
     console.log(session.name);
   }
+
+  console.log("Lists: " + JSON.stringify(session.garments));
 </script>
 
 <style>
@@ -119,10 +124,8 @@
     {/if}
   {/each}
 {/if}
-<!---order button-->
-<button class="button">Order!</button>
-<!---Remember me button-->
-<button class="button" on:click={saveDataToLocal}>Remember me</button>
+<!---Order button-->
+<button class="button" on:click={saveDataToLocal}>Order!</button>
 <!---Get my details button-->
 <button class="button" on:click={getDataFromLocal}>Get my details</button>
 <!--input of name if they user wants to get their details-->

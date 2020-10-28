@@ -1,27 +1,7 @@
 <script>
-  /* each garment is defined as a variable.
-   * let is a boolean variable
-   */
-  //let tShirt = false;
-  //let sportsfit = false;
-  // let longsleeved = false;
-  //let jumpers = false;
-  //let shoes = false;
-  //let socks = false;
-  //let swimmingcap = false;
-  //let sunhat = false;
-
-  // import { stores } from "@sapper/app";
-  // const { session } = stores();
-
-  // //alowing saved items in the options from multiple pages
-  // function addOptions() {
-  //   session.garments = [...session.garments, ...options];
-  // }
-
   // each object has a name and a Boolean
   //variable for each singular garment that is not selected
-  let notTicked = false;
+  let somethingTicked = false;
 
   import { stores } from "@sapper/app";
   const { session } = stores();
@@ -34,22 +14,20 @@
   function addOptions() {
     // session.garments = [...session.garments, ...options];
     //if user does not eneter name or too long or too short it will alert them
-    options.forEach(function addOptions(item, index) {
-      if (false === item.ticked) {
-        console.log(session.garments === false);
-        notTicked = false;
-      } else {
-        // for each loop to go through the options array
-        // if the option is ticked, then add it to garments
-        options.forEach(function addOptions(item, index) {
-          if (true === item.ticked) {
-            console.log(session.garments === true);
-            session.garments = [...session.garments, item];
-          }
-        });
+    options.forEach((item, index) => {
+      if (true === item.ticked) {
+        somethingTicked = true;
       }
     });
-    if (false === notTicked) alert(`You did not save any garments`);
+    // for each loop to go through the options array
+    // if the option is ticked, then add it to garments
+    options.forEach((item, index) => {
+      if (true === item.ticked) {
+        console.log(session.garments === true);
+        session.garments = [...session.garments, item];
+      }
+    });
+    if (somethingTicked === false) alert(`You did not save any garments`);
   }
 
   // array of garments

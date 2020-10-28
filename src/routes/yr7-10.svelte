@@ -1,39 +1,7 @@
 <script>
-  /* each garment is defined as a variable.
-   * let is a boolean variable
-   */
-  /*
-  let summerdress = false;
-  let culottes = false;
-  let longsleeved = false;
-  let jerseys = false;
-  let blazer = false;
-  let rangisocks = false;
-  let shoes = false;
-  let jacket = false;
-
-  let kilt = false;
-  let culottes2 = false;
-  let lightshirt = false;
-  let tie = false;
-  let jersey2 = false;
-  let blazer2 = false;
-  let tights = false;
-  let shoes2 = false;
-  let jacket2 = false;
-  */
-  // import { stores } from "@sapper/app";
-  // const { session } = stores();
-
-  // console.log("Working on junior");
-  // //alowing saved items in the options from multiple pages
-  // function addOptions() {
-  //   console.log("Added item");
-  //   session.garments = [...session.garments, ...options];
-  // }
   // each object has a name and a Boolean
   //variable for each singular garment that is not selected
-  let notTicked = false;
+  let somethingTicked = false;
 
   import { stores } from "@sapper/app";
   const { session } = stores();
@@ -46,22 +14,20 @@
   function addOptions() {
     // session.garments = [...session.garments, ...options];
     //if user does not eneter name or too long or too short it will alert them
-    options.forEach(function addOptions(item, index) {
-      if (false === item.ticked) {
-        console.log(session.garments === false);
-        notTicked = false;
-      } else {
-        // for each loop to go through the options array
-        // if the option is ticked, then add it to garments
-        options.forEach(function addOptions(item, index) {
-          if (true === item.ticked) {
-            console.log(session.garments === true);
-            session.garments = [...session.garments, item];
-          }
-        });
+    options.forEach((item, index) => {
+      if (true === item.ticked) {
+        somethingTicked = true;
       }
     });
-    if (false === notTicked) alert(`You did not save any garments`);
+    // for each loop to go through the options array
+    // if the option is ticked, then add it to garments
+    options.forEach((item, index) => {
+      if (true === item.ticked) {
+        console.log(session.garments === true);
+        session.garments = [...session.garments, item];
+      }
+    });
+    if (somethingTicked === false) alert(`You did not save any garments`);
   }
 
   // array of garments

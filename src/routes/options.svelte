@@ -61,7 +61,7 @@
   <!--input of name-->
   <div class="box">
     <p>Enter name:</p>
-    <input bind:value={name} />
+    <input type="text" pattern="[A-Za-z]" bind:value={name} />
     <button class="button is-focused" on:click={addName}>Save Name</button>
     <h1 class="subtitle is-1">Options</h1>
 
